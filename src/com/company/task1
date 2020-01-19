@@ -1,0 +1,26 @@
+create table buses(
+id serial primary key,
+number_of_bus integer unique not null,
+start_place varchar(50) not null,
+finish_place varchar (50) not null
+);
+
+create table drivers(
+id serial primary key,
+FIO varchar(50) not null,
+age int not null
+);
+insert into drivers(FIO,age)
+values ('Driver1',45),('Driver2',56),('Driver3',78),('Driver4',23);
+insert into buses(number_of_bus,start_place,finish_place)
+values (36,'Ak-orgo','Tunguch'),(6,'Asanbay','Selekciya'),(56,'Dordoi','Alamidin'),(45,'Djal','Lebedinovka');
+
+create table journal(
+id serial primary key,
+driver int references drivers(id),
+bus int references buses(id),
+time timestamp not null
+);
+insert into journal(driver,bus,time)
+values(1,4,now()),(2,3,now()),(3,2,now()),(4,1,now());
+select*from journal;
